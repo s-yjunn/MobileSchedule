@@ -1,14 +1,17 @@
 package com.example.haya1;
 
 import android.app.Activity;
-import android.content.SharedPreferences;
+import android.app.Dialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.Switch;
 
-public class NewTimerPopup extends Activity {
+public class NewTaskPopup extends Activity {
 
     private int hour;
     private int minute;
@@ -17,7 +20,6 @@ public class NewTimerPopup extends Activity {
     private NumberPicker minutePicker;
     private NumberPicker secondPicker;
     private EditText reminder;
-    private Switch EnableTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +30,6 @@ public class NewTimerPopup extends Activity {
         minutePicker = (NumberPicker)findViewById(R.id.minutePicker);
         secondPicker = (NumberPicker)findViewById(R.id.secondPicker);
         reminder = (EditText)findViewById(R.id.editTextReminder);
-        EnableTimer = (Switch)findViewById(R.id.switch_EnableTimer);
 
         hourPicker.setMaxValue(3);
         hourPicker.setMinValue(0);
@@ -44,9 +45,7 @@ public class NewTimerPopup extends Activity {
         TimeData.timerMinute = minutePicker.getValue();
         TimeData.timerSecond = secondPicker.getValue();
         TimeData.reminder = reminder.getText().toString();
-        TimeData.timerEnabled = EnableTimer.isChecked();
-        //Intent intent = new Intent();
-        setResult(2);
+        setResult(3);
         finish();
     }
 

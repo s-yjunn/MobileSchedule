@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".myCalendar">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="406dp"
+        android:layout_height="542dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.427">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="185dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/LongTask1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#A2D16B"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/LongTask2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#6FCCD8"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/LongTask3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#A2D16B"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/LongTask4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#6FCCD8"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/LongTask5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#A2D16B"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="41dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="6:00" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="7:00" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="8:00" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="9:00" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="10:00" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="11:00" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="12:00" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="193dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/ShortTask1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#A2D16B"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/ShortTask2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#6FCCD8"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/ShortTask3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#A2D16B"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/ShortTask4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#6FCCD8"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/ShortTask5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#A2D16B"
+                    android:text="TextView" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_AddShortTermEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Short Term Event"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.928"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.948" />
+
+    <Button
+        android:id="@+id/btn_AddLongTermEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Long Term Event"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.948" />
+
+    <TextView
+        android:id="@+id/CurrentDayDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CurrentDayDisplay"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.053" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.038"
+        app:srcCompat="@android:drawable/arrow_up_float" />
+</androidx.constraintlayout.widget.ConstraintLayout>

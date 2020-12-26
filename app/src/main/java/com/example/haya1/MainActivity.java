@@ -5,14 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.app.ActivityOptions;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -22,30 +27,40 @@ public class MainActivity extends AppCompatActivity {
     private TextView ExpDisplay;
     private TextView CoinDisplay;
 
+    public static final String UserData = "UserData";
+    public static final String UserExp = "UserExp";
+    public static final String UserCoin = "UserCoin";
+    SharedPreferences userData;
+
+    public static final String CalenderInfo = "CalendarInfo";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        userData = getSharedPreferences(UserData, MODE_PRIVATE);
+
+        File file = new File(getFilesDir(), CalenderInfo);
+
         TimeLeftDisplay = (TextView)findViewById(R.id.TimeLeft);
         ExpDisplay = (TextView)findViewById(R.id.ExpDisplay);
         CoinDisplay = (TextView)findViewById(R.id.CoinDisplay);
 
-//        Device.StartTimer(TimeSpan.FromSeconds(1), ontimerTick);
-//        Button btn_NewTimerPopup = (Button)findViewById(R.id.btn_NewTimerPopup);
-//        btn_NewTimerPopup.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i = new Intent(getApplicationContext(), NewTimerPopup.class);
-//                startActivity(i, ActivityOptions.makeSceneTransitionAnimation(NewTimerPopup).toBundle());
-//            }
-//        });
+        ExpDisplay.setText("Current Exp: " + userData.getInt(UserExp, 0));
+        CoinDisplay.setText("Current Coins: " + userData.getInt(UserCoin, 0));
     }
 
     public void btn_NewTimerPopup(View view)
     {
         Intent i = new Intent(getApplicationContext(), NewTimerPopup.class);
         startActivityForResult(i, 1);
+    }
+
+    public void btn_myCalendar(View view)
+    {
+        Intent i = new Intent(getApplicationContext(), myCalendar.class);
+        startActivityForResult(i, 2);
     }
 
     @Override
@@ -71,16 +86,25 @@ public class MainActivity extends AppCompatActivity {
                 int second = (int)(l - hour * 3600000 - minute * 60000) / 1000;
                 String display = "Time left: " + String.format("%02d:%02d:%02d", hour, minute, second);
                 TimeLeftDisplay.setText(display);
-                ExpAndCoinData.currentExp += 1;
-                ExpDisplay.setText("Current EXP: " + ExpAndCoinData.currentExp);
+
+//                ExpAndCoinData.currentExp += 1;
+                SharedPreferences.Editor editor = userData.edit();
+                int currentExp = userData.getInt(UserExp, 0) + 1;
+                editor.putInt(UserExp, currentExp);
+                editor.apply();
+                ExpDisplay.setText("Current EXP: " + userData.getInt(UserExp, 0));
             }
 
             @Override
             public void onFinish() {
                 TimeData.timerEnabled = false;
                 TimeLeftDisplay.setText("No task right now.");
-                ExpAndCoinData.currentCoins += timeMillis / 10000;
-                CoinDisplay.setText("Current Coins: " + ExpAndCoinData.currentCoins);
+//                ExpAndCoinData.currentCoins += timeMillis / 10000;
+                SharedPreferences.Editor editor = userData.edit();
+                int currentCoin = userData.getInt(UserCoin, 0) + (int)(timeMillis / 10000);
+                editor.putInt(UserCoin, currentCoin);
+                editor.apply();
+                CoinDisplay.setText("Current Coins: " + userData.getInt(UserCoin, 0));
                 timeUpAlert();
             }
         }.start();
